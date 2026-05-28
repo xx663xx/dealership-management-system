@@ -1,17 +1,8 @@
 import os
 import tkinter as tk
 from tkinter import messagebox
-from .config import BASE_DIR, CONTRACTS_DIR, CONTRACT_TEMPLATE_PATH, format_integer, format_money
-
-
-def safe_contract_filename(value):
-    allowed = []
-    for char in value:
-        if char.isalnum() or char in ("-", "_"):
-            allowed.append(char)
-        else:
-            allowed.append("_")
-    return "".join(allowed).strip("_") or "contract"
+from packages.dealership_core import format_integer, format_money, safe_contract_filename
+from .config import BASE_DIR, CONTRACTS_DIR, CONTRACT_TEMPLATE_PATH
 
 
 def get_sale_contract_data(conn, sale_id):
