@@ -40,11 +40,11 @@ make check
 make help
 ```
 
-По умолчанию `Makefile` запускает Python командой `python3`. На Windows, где Python часто доступен как `python`, команды проверки можно запускать так:
+`Makefile` выбирает команду Python по платформе: `python` на Windows и `python3` на macOS/Linux. Если в окружении Python доступен под другим именем, команду можно переопределить:
 
 ```bash
-make test PYTHON=python
-make check PYTHON=python
+make test PYTHON=python3
+make check PYTHON=python3
 ```
 
 ## Что внутри
