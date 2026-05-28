@@ -1,6 +1,7 @@
 import tkinter as tk
 from datetime import date
 from tkinter import messagebox, ttk
+from packages.dealership_core import ValidationError, validate_sale
 from .config import COLUMN_LABELS, TABLES, format_row_for_display, value_from_entry
 from .contracts import generate_contract_for_sale, save_contract_for_sale, show_contract_preview
 
@@ -64,11 +65,13 @@ def open_sale_form_for_car(conn, root, tree):
         return
 
     status = record[8]
-    if status != "доступна":
+    today = date.today().isoformat()
+    try:
+        validate_sale(status, record[7], today)
+    except ValidationError:
         messagebox.showerror("Ошибка", "Продать можно только автомобиль со статусом «доступна»")
         return
 
-    today = date.today().isoformat()
     defaults = {
         "car_id": record[0],
         "sale_date": today,
