@@ -24,6 +24,10 @@ class CoreValidatorTests(unittest.TestCase):
         with self.assertRaisesRegex(ValidationError, "YYYY-MM-DD"):
             validate_sale("доступна", "2500000", "28.05.2026")
 
+    def test_validate_sale_rejects_missing_date(self):
+        with self.assertRaisesRegex(ValidationError, "sale_date"):
+            validate_sale("доступна", "2500000", "")
+
     def test_validate_reservation_accepts_valid_date_range(self):
         validate_reservation("2026-05-28", "2026-06-02")
 
