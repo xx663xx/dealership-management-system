@@ -41,8 +41,6 @@ site/
 *.tmp
 *.log
 
-# Course reference files used locally, not part of the project
-Ожидаемый результат.md
-От одного файла к проекту.md
-Стресс-тест проекта.md
-plan.md
+# Local workspace notes
+/Obsidian/
+/obsidian/
