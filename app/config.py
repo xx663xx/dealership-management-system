@@ -1,5 +1,7 @@
 import os
 
+from packages.dealership_core import format_integer, format_money
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH = os.path.join(BASE_DIR, "data", "dealership.db")
@@ -492,27 +494,6 @@ def value_from_entry(text, field=None):
     if field in MONEY_COLUMNS or field in INTEGER_COLUMNS:
         return text.replace(" ", "")
     return text
-
-
-def format_money(value):
-    if value is None:
-        return ""
-    try:
-        number = float(value)
-    except ValueError:
-        return value
-    if number.is_integer():
-        return f"{int(number):,}".replace(",", " ")
-    return f"{number:,.2f}".replace(",", " ")
-
-
-def format_integer(value):
-    if value is None:
-        return ""
-    try:
-        return f"{int(value):,}".replace(",", " ")
-    except ValueError:
-        return value
 
 
 def format_row_for_display(columns, row):
