@@ -20,6 +20,6 @@ test:
 	$(PYTHON) -m unittest discover -s tests
 
 build-lib:
-	$(PYTHON) -m build --wheel --no-isolation
+	$(PYTHON) scripts/build_core_wheel.py
 
 check: test

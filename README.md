@@ -34,7 +34,7 @@ make test
 make check
 ```
 
-Переиспользуемое ядро в `packages/dealership_core` можно собрать как wheel-артефакт:
+Переиспользуемое ядро в `packages/dealership_core` можно собрать как wheel-артефакт без запуска GUI и без внешних build-зависимостей:
 
 ```bash
 make build-lib
