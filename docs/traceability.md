@@ -34,9 +34,9 @@
 | Сборка reusable core не зависит от reviewer-specific venv tooling | `scripts/build_core_wheel.py`, `Makefile` | `make build-lib` на macOS/Windows review | PR #6 fix `cef85cb` | Done |
 | Спецификация предметной области оформлена отдельно | `docs/specification.md` | Documentation review, `make check` | PR #7 | Done |
 | Архитектурное описание проекта оформлено отдельно | `docs/architecture.md` | Documentation review, `make check` | PR #8 | Done |
-| Диаграммы хранятся в редактируемом виде | `docs/diagrams/` | Проверка наличия исходников `.mmd`/`.drawio` и совпадения с кодом | Not merged yet | Planned |
+| Диаграммы хранятся в редактируемом виде | `docs/diagrams/*.drawio.xml`, `docs/diagrams/README.md` | `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI | Current diagrams PR | In review |
 | README является полной точкой входа | `README.md` | Fresh-clone/manual verification | Partial updates in PR #1 and PR #6 | Planned |
-| Документация для разработчика | Planned: `docs/developer-guide.md` | Review, fresh-clone workflow | Not started | Planned |
+| Документация для разработчика | `docs/developer-guide.md` | Review, fresh-clone workflow, `make check`, `make build-lib` | PR #10 | Done |
 | Docker/Compose для воспроизводимых проверок | Planned: `Dockerfile`, `.dockerignore`, `infra/compose.yaml` | `docker build`, `docker compose` / `make compose-check` | Not started | Planned |
 | Команда сборки документации | Planned: `make docs` or equivalent | `make docs` | Not started | Planned |
 | Отчет о покрытии тестами | Planned: coverage tooling / `make coverage` | `make coverage` | Not started | Planned |
@@ -56,8 +56,6 @@
 
 На текущем этапе проект уже имеет тесты, reusable core, thin entrypoint, packaging-команду и спецификацию. До финальной сдачи еще нужно закрыть:
 
-- оформить editable diagrams как tracked artifacts;
-- добавить `docs/developer-guide.md`;
 - довести README до полного fresh-clone сценария;
 - добавить Docker/Compose для воспроизводимых проверок;
 - добавить `make docs` и, при необходимости, `make coverage`;
