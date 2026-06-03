@@ -5,6 +5,7 @@ from .config import DB_PATH, SCHEMA_PATH, SEED_PATH
 
 
 def connect_db():
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     conn.execute("PRAGMA foreign_keys = ON")
     return conn
