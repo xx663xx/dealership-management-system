@@ -1,8 +1,8 @@
-# Container Verification
+# Контейнерная проверка
 
-This project is a Tkinter desktop application, so the graphical interface is launched locally with `make run`.
+Проект является desktop-приложением на Tkinter, поэтому графический интерфейс запускается локально командой `make run`.
 
-Docker and Compose are used for reproducible non-GUI checks:
+Docker и Compose используются для воспроизводимой проверки без открытия GUI:
 
 ```bash
 docker build -t car-dealership-checks:local .
@@ -11,8 +11,8 @@ docker compose -f infra/compose.yaml run --rm checks
 docker compose -f infra/compose.yaml down
 ```
 
-The container runs the automated tests and builds the reusable `dealership_core` wheel without opening the GUI.
+Контейнер запускает автоматические тесты и собирает reusable core wheel без открытия Tkinter-окна.
 
-The image uses full `python:3.11` instead of `python:3.11-slim`. The checks do not open a GUI window, but the test suite imports application modules that import `tkinter`; the slim image does not include the Tk libraries required for those imports.
+Образ использует полный `python:3.11`, а не `python:3.11-slim`. Проверки не открывают GUI, но тесты импортируют модули приложения, которые импортируют `tkinter`. В slim-образе нет Tk-библиотек, необходимых для такого импорта.
 
-Compose uses the default command from the Dockerfile, so the non-GUI verification command has a single source of truth.
+Compose использует команду по умолчанию из `Dockerfile`, поэтому команда non-GUI проверки описана в одном месте.
