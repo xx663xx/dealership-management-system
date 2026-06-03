@@ -1,0 +1,8 @@
+services:
+  checks:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: car-dealership-checks:local
+    env_file:
+      - ../.env.example

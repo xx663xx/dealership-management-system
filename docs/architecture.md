@@ -51,7 +51,7 @@ flowchart TB
 | Data/schema | `sql/schema.sql`, `sql/seed_data.sql`, `data/dealership.db` | SQLite-схема, демонстрационные данные, локальная runtime-база. |
 | Documents/templates | `templates/`, `contracts/` | Шаблон договора и сгенерированные текстовые договоры. |
 | Tests | `tests/smoke/`, `tests/unit/`, `tests/integration/` | Фиксация поведения, проверки reusable core и SQLite-сценариев. |
-| Automation/build | `Makefile`, `pyproject.toml`, `scripts/build_core_wheel.py` | Единые команды запуска, тестов и сборки reusable core wheel. |
+| Automation/build | `Makefile`, `pyproject.toml` | Единые команды запуска, тестов и сборки reusable core wheel. |
 | Documentation | `README.md`, `docs/` | Инструкции запуска, спецификация, архитектура и будущие диаграммы/traceability. |
 
 ## Запускаемый слой
@@ -98,7 +98,7 @@ Core проверяется unit-тестами и собирается отде
 make build-lib
 ```
 
-Команда создает wheel-артефакт в `dist/` через `scripts/build_core_wheel.py`. Сборка не запускает Tkinter и не требует подключения к SQLite.
+Команда создает wheel-артефакт в `dist/` стандартным Python-инструментом `build` по метаданным из `pyproject.toml`. Сборка не запускает Tkinter и не требует подключения к SQLite.
 
 ## Работа с SQLite
 
@@ -143,6 +143,7 @@ SQLite-схема хранит не только таблицы, но и час�
 | `make run` | Запускает Tkinter-приложение. |
 | `make test` | Запускает automated tests через `unittest discover`. |
 | `make check` | Основная локальная проверка проекта. Сейчас зависит от `test`. |
+| `make install-build-tool` | Явно устанавливает стандартные инструменты сборки `build` и `setuptools`. |
 | `make build-lib` | Собирает reusable core wheel без запуска GUI. |
 
 `Makefile` выбирает `python` на Windows и `python3` на macOS/Linux. Это сделано после review, чтобы команды проверки были воспроизводимее для разных участников.
