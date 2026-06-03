@@ -22,6 +22,7 @@
 git clone <repo-url>
 cd <repo-folder>
 make help
+make setup
 make check
 ```
 
@@ -65,6 +66,22 @@ make check
 make test
 ```
 
+Для проверки документации и редактируемых диаграмм:
+
+```bash
+make docs
+```
+
+Команда проверяет наличие основных Markdown-документов и парсит Draw.io XML-исходники диаграмм стандартными средствами Python.
+
+Для базового отчета покрытия без внешних зависимостей:
+
+```bash
+make coverage
+```
+
+Команда не устанавливает внешний coverage tool. Сейчас она документирует это ограничение и запускает полный набор `unittest` как baseline-проверку.
+
 ## Сборка переиспользуемого ядра
 
 Переиспользуемая логика автосалона находится в
@@ -82,6 +99,17 @@ make build-lib
 
 `make install-build-tool` явно устанавливает стандартные инструменты сборки `build` и `setuptools`. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling уже доступен, и собирает wheel через `python -m build --wheel --no-isolation`.
 
+## Docker/Compose проверки
+
+Tkinter GUI запускается локально через `make run`. Контейнерные проверки используются для non-GUI сценария: тестов и сборки reusable core wheel.
+
+```bash
+make compose-check
+make compose-down
+```
+
+`make compose-check` запускает сервис `checks` из `infra/compose.yaml`. `make compose-down` удаляет compose-сеть после проверки.
+
 ## Структура проекта
 
 ```text
@@ -94,6 +122,8 @@ tests/smoke/                    smoke-тесты без GUI
 tests/unit/                     тесты reusable core
 tests/integration/              SQLite integration tests
 docs/                           спецификация, архитектура, traceability
+Dockerfile                      контейнерная non-GUI проверка
+infra/                          Compose и описание контейнерной проверки
 ```
 
 ## Рабочий цикл
@@ -123,6 +153,14 @@ make check
 make build-lib
 ```
 
+Если изменение затрагивает документацию, диаграммы или инфраструктуру, полезны дополнительные проверки:
+
+```bash
+make docs
+make compose-check
+make compose-down
+```
+
 Перед коммитом проверить рабочее дерево:
 
 ```bash
@@ -138,6 +176,12 @@ git status --short --ignored
 - `dist/`
 - `build/`
 - `__pycache__/`
+
+Сгенерированные артефакты можно убрать командой:
+
+```bash
+make clean
+```
 
 Коммитить нужно только файлы, относящиеся к конкретной задаче:
 
@@ -168,13 +212,10 @@ make check
 make build-lib
 ```
 
-## Что пока запланировано
+Если PR меняет документацию, диаграммы или контейнерные проверки, также нужно запустить:
 
-Следующие пункты еще не реализованы и не должны описываться как готовые
-
-- Docker/Compose для воспроизводимых проверок;
-- отдельная команда `make docs`;
-- команда для отчета покрытия тестами;
-- полноценная команда `make setup` для подготовки окружения.
-
-Эти пункты лучше добавлять отдельными небольшими изменениями.
+```bash
+make docs
+make compose-check
+make compose-down
+```

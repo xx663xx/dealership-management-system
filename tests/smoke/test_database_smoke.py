@@ -1,9 +1,12 @@
 import sqlite3
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 from app.config import REPORTS
 from app.contracts import get_sale_contract_data, render_contract
-from app.database import init_db
+from app.database import connect_db, init_db
 
 
 EXPECTED_TABLES = {
@@ -90,6 +93,20 @@ class DatabaseSmokeTests(unittest.TestCase):
                 """,
                 (1, "Test", "Invalid", 2024, 0, "white", -1, "доступна"),
             )
+
+    def test_connect_db_creates_missing_database_directory(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            db_path = Path(temp_dir) / "missing" / "dealership.db"
+
+            with patch("app.database.DB_PATH", str(db_path)):
+                conn = connect_db()
+                try:
+                    foreign_keys = conn.execute("PRAGMA foreign_keys").fetchone()[0]
+                finally:
+                    conn.close()
+
+            self.assertTrue(db_path.exists())
+            self.assertEqual(foreign_keys, 1)
 
 
 if __name__ == "__main__":
