@@ -10,10 +10,11 @@ WORKDIR /workspace
 
 COPY app/ app/
 COPY packages/ packages/
-COPY scripts/ scripts/
 COPY sql/ sql/
 COPY templates/ templates/
 COPY tests/ tests/
 COPY main.py pyproject.toml README.md ./
 
-CMD ["sh", "-c", "python -m unittest discover -s tests && python scripts/build_core_wheel.py"]
+RUN python -m pip install "build>=1.2" "setuptools>=68"
+
+CMD ["sh", "-c", "python -m unittest discover -s tests && python -m build --wheel --no-isolation"]

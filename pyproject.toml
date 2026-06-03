@@ -15,7 +15,8 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = [
-    "build>=1.2"
+    "build>=1.2",
+    "setuptools>=68"
 ]
 
 [tool.setuptools.packages.find]

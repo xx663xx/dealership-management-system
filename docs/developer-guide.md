@@ -76,10 +76,11 @@ packages/dealership_core/
 Собрать ее как wheel-пакет можно командой
 
 ```bash
+make install-build-tool
 make build-lib
 ```
 
-Сборка выполняется через `scripts/build_core_wheel.py`, не требует внешних build-инструментов и не запускает GUI.
+`make install-build-tool` явно устанавливает стандартные инструменты сборки `build` и `setuptools`. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling уже доступен, и собирает wheel через `python -m build --wheel --no-isolation`.
 
 ## Структура проекта
 
@@ -93,7 +94,6 @@ tests/smoke/                    smoke-тесты без GUI
 tests/unit/                     тесты reusable core
 tests/integration/              SQLite integration tests
 docs/                           спецификация, архитектура, traceability
-scripts/                        вспомогательные скрипты для Makefile
 ```
 
 ## Рабочий цикл
