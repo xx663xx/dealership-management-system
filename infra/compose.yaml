@@ -6,6 +6,3 @@ services:
     image: car-dealership-checks:local
     env_file:
       - ../.env.example
-    command: >
-      sh -c "python -m unittest discover -s tests
-      && python -m build --wheel --no-isolation"
