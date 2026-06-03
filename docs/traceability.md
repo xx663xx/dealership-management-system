@@ -30,14 +30,14 @@
 | Договор продажи формируется по шаблону | `app/contracts.py`, `templates/contract_template.txt` | `tests/smoke/test_database_smoke.py`, `make check` | PR #1, PR #2 | Done |
 | Безопасное имя файла договора вынесено в reusable core | `packages/dealership_core/helpers.py`, `app/contracts.py` | `tests/unit/test_core_helpers.py`, `make check` | PR #2 | Done |
 | Единая команда проверки проекта | `Makefile` | `make check` | PR #1, PR #6 | Done |
-| Reusable core можно собрать отдельно от GUI | `pyproject.toml`, `scripts/build_core_wheel.py`, `Makefile` | `make build-lib` | PR #6 | Done |
-| Сборка reusable core не зависит от reviewer-specific venv tooling | `scripts/build_core_wheel.py`, `Makefile` | `make build-lib` на macOS/Windows review | PR #6 fix `cef85cb` | Done |
+| Reusable core можно собрать отдельно от GUI | `pyproject.toml`, `Makefile` | `make install-build-tool`, `make build-lib` | PR #6; standard build update | Done |
+| Сборка reusable core использует стандартный Python build workflow | `pyproject.toml`, `Makefile` | `make install-build-tool`, `make build-lib` | PR #18 | Done |
 | Спецификация предметной области оформлена отдельно | `docs/specification.md` | Documentation review, `make check` | PR #7 | Done |
 | Архитектурное описание проекта оформлено отдельно | `docs/architecture.md` | Documentation review, `make check` | PR #8 | Done |
-| Диаграммы хранятся в редактируемом виде | `docs/diagrams/*.drawio.xml`, `docs/diagrams/README.md` | `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI | Current diagrams PR | In review |
-| README является полной точкой входа | `README.md` | Fresh-clone/manual verification | Partial updates in PR #1 and PR #6 | Planned |
+| Диаграммы хранятся в редактируемом виде | `docs/diagrams/*.drawio.xml`, `docs/diagrams/README.md` | `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI | PR #11 | Done |
+| README является полной точкой входа | `README.md` | Fresh-clone/manual verification, `make check`, `make install-build-tool`, `make build-lib` | Current README PR | In review |
 | Документация для разработчика | `docs/developer-guide.md` | Review, fresh-clone workflow, `make check`, `make build-lib` | PR #10 | Done |
-| Docker/Compose для воспроизводимых проверок | Planned: `Dockerfile`, `.dockerignore`, `infra/compose.yaml` | `docker build`, `docker compose` / `make compose-check` | Not started | Planned |
+| Docker/Compose для воспроизводимых проверок | `Dockerfile`, `.dockerignore`, `.env.example`, `infra/compose.yaml`, `infra/README.md` | `docker build`, `docker run`, `docker compose -f infra/compose.yaml run --rm checks` | PR #18 | Done |
 | Команда сборки документации | Planned: `make docs` or equivalent | `make docs` | Not started | Planned |
 | Отчет о покрытии тестами | Planned: coverage tooling / `make coverage` | `make coverage` | Not started | Planned |
 
@@ -48,15 +48,14 @@
 | Smoke tests | `tests/smoke/` | `make check` |
 | Unit and negative tests | `tests/unit/` | `make check` |
 | SQLite integration tests | `tests/integration/` | `make check` |
-| Reusable core build | `packages/dealership_core/`, `scripts/build_core_wheel.py` | `make build-lib` |
+| Reusable core build | `packages/dealership_core/`, `pyproject.toml` | `make build-lib` |
+| Container non-GUI checks | `Dockerfile`, `infra/compose.yaml`, `infra/README.md` | `docker compose -f infra/compose.yaml run --rm checks` |
 | Tkinter runtime | `main.py`, `app/main_window.py`, `app/ui_tables.py`, `app/ui_reports.py` | `make run` |
 | Documentation | `README.md`, `docs/specification.md`, `docs/architecture.md` | Review + `make check` |
 
-## Открытые gaps
+## Что осталось сделать
 
-На текущем этапе проект уже имеет тесты, reusable core, thin entrypoint, packaging-команду и спецификацию. До финальной сдачи еще нужно закрыть:
+На текущем этапе проект уже имеет тесты, reusable core, thin entrypoint, packaging-команду, Docker/Compose, спецификацию, архитектурное описание, traceability и редактируемые диаграммы. Перед защитой остаются дополнительные улучшения автоматизации:
 
-- довести README до полного fresh-clone сценария;
-- добавить Docker/Compose для воспроизводимых проверок;
-- добавить `make docs` и, при необходимости, `make coverage`;
-- подключить `validate_reservation()` и `validate_test_drive()` к GUI-формам или явно оставить это как documented future work.
+- добавить `make docs`;
+- добавить `make coverage`.
