@@ -12,7 +12,14 @@
 - Git
 - Make или совместимая команда `make`
 
-Дополнительные runtime-библиотеки для приложения не нужны. Проект использует стандартные модули Python, такие как `tkinter` и `sqlite3`.
+Проект не использует сторонние Python runtime-библиотеки. Приложение работает на стандартных модулях Python, таких как `tkinter` и `sqlite3`. На Ubuntu/Linux модуль `tkinter` часто поставляется отдельным системным пакетом, поэтому для локальной проверки может потребоваться `python3-tk`.
+
+Минимальная подготовка Ubuntu:
+
+```bash
+sudo apt update
+sudo apt install -y python3 python3-venv python3-tk make git
+```
 
 На Windows Python обычно доступен как `python`. На macOS и Linux - как `python3`. `Makefile` выбирает команду по платформе, но при необходимости ее можно переопределить.
 
@@ -84,10 +91,11 @@ make docs
 Для отчета покрытия:
 
 ```bash
+make setup
 make coverage
 ```
 
-Команда запускает полный набор `unittest` через `coverage.py`, печатает отчет в терминал и создает `coverage.xml`. Если tooling еще не установлен, сначала выполните `make setup`.
+`make setup` создает локальное окружение `.venv` и устанавливает туда `coverage.py`. `make coverage` запускает полный набор `unittest`, печатает отчет в терминал и создает `coverage.xml`.
 
 ## Сборка переиспользуемого ядра
 
@@ -100,11 +108,11 @@ packages/dealership_core/
 Собрать ее как wheel-пакет можно командой
 
 ```bash
-make install-build-tool
+make setup
 make build-lib
 ```
 
-`make install-build-tool` явно устанавливает стандартные инструменты сборки `build` и `setuptools`. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling уже доступен, и собирает wheel через `python -m build --wheel --no-isolation`.
+`make setup` создает локальное окружение `.venv` и устанавливает туда стандартные инструменты сборки `build` и `setuptools`. Это сохраняет системный Python чистым и работает на Ubuntu 24.04, где прямой `pip install` в системное окружение запрещен. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling уже доступен в `.venv`, и собирает wheel через `python -m build --wheel --no-isolation`.
 
 ## Docker/Compose проверки
 

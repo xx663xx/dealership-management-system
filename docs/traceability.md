@@ -26,12 +26,12 @@
 | Договор продажи формируется по шаблону | `app/contracts.py`, `templates/contract_template.txt` | `tests/smoke/test_database_smoke.py`, `make check` | PR #1, PR #2 | Done |
 | Безопасное имя файла договора вынесено в reusable core | `packages/dealership_core/helpers.py`, `app/contracts.py` | `tests/unit/test_core_helpers.py`, `make check` | PR #2 | Done |
 | Единая команда проверки проекта | `Makefile` | `make check` | PR #1, PR #6 | Done |
-| Reusable core можно собрать отдельно от GUI | `pyproject.toml`, `Makefile` | `make install-build-tool`, `make build-lib` | PR #6; standard build update | Done |
-| Сборка reusable core использует стандартный Python build workflow | `pyproject.toml`, `Makefile` | `make install-build-tool`, `make build-lib` | PR #18 | Done |
+| Reusable core можно собрать отдельно от GUI | `pyproject.toml`, `Makefile` | `make setup`, `make build-lib` | PR #6; standard build update | Done |
+| Сборка reusable core использует стандартный Python build workflow | `pyproject.toml`, `Makefile` | `make setup`, `make build-lib` | PR #18; Ubuntu setup fix | Done |
 | Спецификация предметной области оформлена отдельно | `docs/specification.md` | Documentation review, `make check` | PR #7 | Done |
 | Архитектурное описание проекта оформлено отдельно | `docs/architecture.md` | Documentation review, `make check` | PR #8; diagram cleanup `e07b609` | Done |
 | Диаграммы хранятся в редактируемом виде и связаны с документацией | `docs/diagrams/*.drawio.xml`, `docs/diagrams/exports/*.png`, `docs/diagrams/README.md`, `docs/specification.md`, `docs/architecture.md`, `docs/developer-guide.md` | `make docs`, `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI | PR #11; direct main commit `e07b609` | Done |
-| README является полной точкой входа | `README.md` | Fresh-clone/manual verification, `make check`, `make install-build-tool`, `make build-lib` | PR #19 | Done |
+| README является полной точкой входа | `README.md` | Fresh-clone/manual verification, `make check`, `make setup`, `make build-lib` | PR #19; Ubuntu setup fix | Done |
 | Документация для разработчика | `docs/developer-guide.md` | Review, fresh-clone workflow, `make check`, `make build-lib` | PR #10 | Done |
 | Docker/Compose для воспроизводимых проверок | `Dockerfile`, `.dockerignore`, `.env.example`, `infra/compose.yaml`, `infra/README.md` | `docker build`, `docker run`, `docker compose -f infra/compose.yaml run --rm checks` | PR #18 | Done |
 | Команда сборки документации | `Makefile`, `docs/`, `docs/diagrams/*.drawio.xml`, `docs/diagrams/exports/*.png` | `make docs` | PR #20; direct main commit `e07b609` | Done |

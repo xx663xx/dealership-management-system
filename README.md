@@ -21,7 +21,14 @@
 - Git;
 - Make или совместимая команда `make`.
 
-Дополнительные runtime-библиотеки не требуются, так как приложение использует стандартные модули Python - `tkinter` и `sqlite3`.
+Проект не использует сторонние Python runtime-библиотеки: приложение работает на стандартных модулях `tkinter` и `sqlite3`. На Ubuntu/Linux модуль `tkinter` часто поставляется отдельным системным пакетом, поэтому для проверки может потребоваться `python3-tk`.
+
+Минимальная подготовка Ubuntu:
+
+```bash
+sudo apt update
+sudo apt install -y python3 python3-venv python3-tk make git
+```
 
 `Makefile` выбирает команду Python по платформе: `python` на Windows и `python3` на macOS/Linux. Если Python доступен под другим именем, команду можно переопределить через `PYTHON`.
 
@@ -119,7 +126,7 @@ make setup
 make build-lib
 ```
 
-`make setup` явно устанавливает инструменты разработки `build`, `setuptools` и `coverage`. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling доступен, и собирает wheel через стандартный `python -m build`.
+`make setup` создает локальное окружение `.venv` и устанавливает туда инструменты разработки `build`, `setuptools` и `coverage`. Это нужно для современных Linux-дистрибутивов, где системный Python защищен от прямого `pip install`. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling доступен в `.venv`, и собирает wheel через стандартный `python -m build`.
 
 ## Docker/Compose проверки
 
@@ -173,7 +180,7 @@ make help       # показать доступные команды
 make run        # запустить Tkinter-приложение
 make test       # запустить unittest-набор
 make check      # основная локальная проверка
-make setup      # установить инструменты разработки
+make setup      # создать .venv и установить инструменты разработки
 make build-lib  # собрать reusable core как wheel
 make docs       # проверить документацию и Draw.io XML-диаграммы
 make coverage   # сформировать отчет покрытия тестами

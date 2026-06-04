@@ -142,10 +142,11 @@ SQLite-схема хранит не только таблицы, но и час�
 | `make run` | Запускает Tkinter-приложение. |
 | `make test` | Запускает automated tests через `unittest discover`. |
 | `make check` | Основная локальная проверка проекта. Сейчас зависит от `test`. |
-| `make install-build-tool` | Явно устанавливает стандартные инструменты сборки `build` и `setuptools`. |
-| `make build-lib` | Собирает reusable core wheel без запуска GUI. |
+| `make setup` | Создает локальную `.venv` и устанавливает build/coverage tooling без изменения системного Python. |
+| `make build-lib` | Собирает reusable core wheel через tooling из `.venv` без запуска GUI. |
+| `make coverage` | Запускает тесты через `coverage.py` из `.venv` и формирует отчет покрытия. |
 
-`Makefile` выбирает `python` на Windows и `python3` на macOS/Linux. Это сделано после review, чтобы команды проверки были воспроизводимее для разных участников.
+`Makefile` выбирает `python` на Windows и `python3` на macOS/Linux. Команды runtime-проверки используют системный Python, а инструменты сборки и покрытия устанавливаются в project-local `.venv`. Это сохраняет команды воспроизводимыми на Ubuntu 24.04, где системный Python защищен от прямого `pip install`.
 
 ## Проверки
 
