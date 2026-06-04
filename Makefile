@@ -33,6 +33,7 @@ install-build-tool:
 	$(PYTHON) -m pip install "build>=1.2" "setuptools>=68" "coverage>=7.5"
 
 build-lib:
+	$(PYTHON) -c "import shutil; from pathlib import Path; [shutil.rmtree(p, ignore_errors=True) for p in ['build', 'dealership_core.egg-info']]; [p.unlink() for p in Path('.').rglob('.DS_Store') if '.git' not in p.parts]; print('Prepared clean package build state')"
 	$(PYTHON) -c "import build, setuptools" || (echo "Missing build tooling. Run: make install-build-tool" && exit 1)
 	$(PYTHON) -m build --wheel --no-isolation
 
@@ -46,7 +47,7 @@ coverage:
 	$(PYTHON) -m coverage xml
 
 compose-check:
-	docker compose -f infra/compose.yaml run --rm checks
+	docker compose -f infra/compose.yaml run --build --rm checks
 
 compose-down:
 	docker compose -f infra/compose.yaml down
