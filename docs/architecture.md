@@ -6,40 +6,6 @@
 
 Документ дополняет `docs/specification.md`. Спецификация описывает предметную область и сценарии, а архитектура показывает границы ответственности между файлами и слоями.
 
-## Общий вид
-
-Проект построен как локальное desktop-приложение на Tkinter с SQLite-базой и отдельным reusable core package для чистых helper-функций и доменных правил.
-
-```mermaid
-flowchart TB
-    User["Пользователь"]
-    Main["main.py<br/>тонкая точка входа"]
-    Window["app/main_window.py<br/>создание Tkinter окна"]
-    UI["Application / GUI<br/>app/ui_tables.py<br/>app/ui_reports.py<br/>app/contracts.py"]
-    Config["app/config.py<br/>таблицы, отчеты, пути"]
-    Core["packages/dealership_core<br/>formatting, validators"]
-    DB["app/database.py<br/>SQLite connection/init"]
-    SQL["sql/schema.sql<br/>sql/seed_data.sql"]
-    RuntimeDb["data/dealership.db"]
-    Files["templates/contract_template.txt<br/>contracts/*.txt"]
-    Tests["tests/<br/>smoke, unit, integration"]
-    Build["Makefile<br/>check / build-lib"]
-
-    User --> Main --> Window --> UI
-    UI --> Config
-    UI --> Core
-    UI --> DB
-    UI --> RuntimeDb
-    UI --> Files
-    DB --> SQL
-    DB --> RuntimeDb
-    Build -.-> Tests
-    Build -.-> Core
-    Tests -.-> Core
-    Tests -.-> DB
-    Tests -.-> RuntimeDb
-```
-
 ## Слои и ответственность
 
 | Слой | Файлы | Ответственность |
@@ -52,7 +18,20 @@ flowchart TB
 | Documents/templates | `templates/`, `contracts/` | Шаблон договора и сгенерированные текстовые договоры. |
 | Tests | `tests/smoke/`, `tests/unit/`, `tests/integration/` | Фиксация поведения, проверки reusable core и SQLite-сценариев. |
 | Automation/build | `Makefile`, `pyproject.toml` | Единые команды запуска, тестов и сборки reusable core wheel. |
-| Documentation | `README.md`, `docs/` | Инструкции запуска, спецификация, архитектура и будущие диаграммы/traceability. |
+| Documentation | `README.md`, `docs/` | Инструкции запуска, спецификация, архитектура, traceability и редактируемые диаграммы. |
+
+## Диаграммы
+
+Редактируемые исходники диаграмм лежат в `docs/diagrams/`, а PNG-превью - в `docs/diagrams/exports/`.
+
+| Диаграмма | Исходник | PNG |
+| --- | --- | --- |
+| Use-case overview | `docs/diagrams/use-cases.drawio.xml` | `docs/diagrams/exports/use-cases.png` |
+| Запуск приложения | `docs/diagrams/app-startup-sequence.drawio.xml` | `docs/diagrams/exports/app-startup-sequence.png` |
+| Продажа автомобиля | `docs/diagrams/sales-sequence.drawio.xml` | `docs/diagrams/exports/sales-sequence.png` |
+| IDEF0 context A-0 | `docs/diagrams/idefA-0_context.drawio.xml` | `docs/diagrams/exports/idefA-0_context.png` |
+| IDEF0 decomposition A0 | `docs/diagrams/idefA0_decomposition.drawio.xml` | `docs/diagrams/exports/idefA0_decomposition.png` |
+| IDEF0 sale decomposition A4 | `docs/diagrams/idefA4_decomposition.drawio.xml` | `docs/diagrams/exports/idefA4_decomposition.png` |
 
 ## Запускаемый слой
 
@@ -162,48 +141,10 @@ SQLite-схема хранит не только таблицы, но и час�
 
 ## Потоки выполнения
 
-### Запуск приложения
+Потоки запуска приложения и продажи автомобиля вынесены в редактируемые Draw.io sequence diagrams:
 
-```mermaid
-sequenceDiagram
-    participant User as Пользователь
-    participant Main as main.py
-    participant Window as app.main_window
-    participant DB as app.database
-    participant UI as Tkinter UI
-
-    User->>Main: python main.py / make run
-    Main->>Window: run_app()
-    Window->>DB: connect_db()
-    Window->>DB: init_db(conn)
-    Window->>UI: создать главное окно и меню
-    UI-->>User: показать приложение
-```
-
-### Продажа автомобиля
-
-```mermaid
-sequenceDiagram
-    participant User as Пользователь
-    participant Tables as app.ui_tables
-    participant Core as dealership_core
-    participant DB as SQLite
-    participant Contracts as app.contracts
-
-    User->>Tables: выбрать автомобиль и открыть форму продажи
-    Tables->>Core: validate_sale(status, price, date)
-    Core-->>Tables: ok или ValidationError
-    Tables-->>User: показать форму с заполненными полями
-    User->>Tables: сохранить форму продажи
-    Tables->>DB: INSERT INTO sales
-    DB-->>DB: set_car_sold_after_sale
-    DB-->>DB: complete_reservation_after_sale
-    Tables->>Contracts: save_contract_for_sale()
-    Contracts->>DB: получить данные продажи
-    Contracts->>DB: записать sales.contract_file
-    Contracts-->>Tables: путь к файлу договора
-    Tables-->>User: показать preview и сообщение
-```
+- `docs/diagrams/app-startup-sequence.drawio.xml`;
+- `docs/diagrams/sales-sequence.drawio.xml`.
 
 ## Дальнейшее развитие
 
@@ -214,5 +155,5 @@ sequenceDiagram
 - подключить `validate_reservation()` и `validate_test_drive()` к GUI-формам;
 - вынести чистый рендер договора в reusable core;
 - разделить в `app/database.py` подключение, инициализацию схемы, миграции и seed-логику;
-- добавить Docker/Compose для воспроизводимых проверок;
-- добавить traceability matrix и оформить editable diagrams.
+- расширить GUI-валидацию для бронирований и тест-драйвов;
+- добавить дополнительные регрессионные проверки для отчетов.

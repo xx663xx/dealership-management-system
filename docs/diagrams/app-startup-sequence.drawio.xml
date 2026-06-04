@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="Запуск приложения">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Запуск приложения" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="500" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Пользователь" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="150" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="main.py" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="150" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="app.main_window" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="150" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="app.database" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="150" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Tkinter UI" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="150" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="205" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="575" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="875" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1165" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1465" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="python main.py / make run" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="205" y="310" as="sourcePoint" />
+            <mxPoint x="575" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="run_app()" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="575" y="380" as="sourcePoint" />
+            <mxPoint x="875" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="connect_db()" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="875" y="450" as="sourcePoint" />
+            <mxPoint x="1165" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="init_db(conn)" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="875" y="515" as="sourcePoint" />
+            <mxPoint x="1165" y="515" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="создать главное окно и меню" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="875" y="585" as="sourcePoint" />
+            <mxPoint x="1465" y="585" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="показать приложение" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#333333;strokeWidth=2;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1465" y="660" as="sourcePoint" />
+            <mxPoint x="205" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="Пользователь" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="760" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="main.py" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="760" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="app.main_window" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="760" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="app.database" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="760" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="Tkinter UI" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="760" width="210" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

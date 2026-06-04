@@ -146,10 +146,10 @@ tests/smoke/                    smoke-тесты без GUI
 tests/unit/                     unit и negative tests reusable core
 tests/integration/              SQLite integration tests
 docs/                           документация, спецификация, архитектура
-docs/diagrams/                  редактируемые исходники диаграмм Draw.io
+docs/diagrams/                  редактируемые исходники диаграмм и PNG-экспорты
 Dockerfile                      контейнерная non-GUI проверка
 infra/                          Compose и описание контейнерной проверки
-screenshots/                    изображения интерфейса и диаграмм
+screenshots/                    скриншоты Tkinter-интерфейса
 ```
 
 ## Документация
@@ -160,9 +160,9 @@ screenshots/                    изображения интерфейса и �
 - `docs/architecture.md` - слои приложения, reusable core, SQLite, договоры и тестовая стратегия;
 - `docs/developer-guide.md` - локальный workflow разработчика, ветки, проверки и Pull Request;
 - `docs/traceability.md` - матрица соответствия требований файлам, тестам и PR;
-- `docs/diagrams/` - редактируемые исходники диаграмм в формате diagrams.net / Draw.io XML.
+- `docs/diagrams/` - редактируемые исходники диаграмм и PNG-экспорты для отчетов.
 
-PNG-версии диаграмм используются в отчете и скриншотах, но исходниками считаются файлы в `docs/diagrams/`.
+`screenshots/` хранит только скриншоты Tkinter-интерфейса. Диаграммы и их PNG-превью лежат в `docs/diagrams/`.
 
 ## Команды проекта
 

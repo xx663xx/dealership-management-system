@@ -34,11 +34,11 @@
 | Сборка reusable core использует стандартный Python build workflow | `pyproject.toml`, `Makefile` | `make install-build-tool`, `make build-lib` | PR #18 | Done |
 | Спецификация предметной области оформлена отдельно | `docs/specification.md` | Documentation review, `make check` | PR #7 | Done |
 | Архитектурное описание проекта оформлено отдельно | `docs/architecture.md` | Documentation review, `make check` | PR #8 | Done |
-| Диаграммы хранятся в редактируемом виде | `docs/diagrams/*.drawio.xml`, `docs/diagrams/README.md` | `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI | PR #11 | Done |
+| Диаграммы хранятся в редактируемом виде | `docs/diagrams/*.drawio.xml`, `docs/diagrams/exports/*.png`, `docs/diagrams/README.md` | `make docs`, `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI | Current diagram organization | In review |
 | README является полной точкой входа | `README.md` | Fresh-clone/manual verification, `make check`, `make install-build-tool`, `make build-lib` | PR #19 | Done |
 | Документация для разработчика | `docs/developer-guide.md` | Review, fresh-clone workflow, `make check`, `make build-lib` | PR #10 | Done |
 | Docker/Compose для воспроизводимых проверок | `Dockerfile`, `.dockerignore`, `.env.example`, `infra/compose.yaml`, `infra/README.md` | `docker build`, `docker run`, `docker compose -f infra/compose.yaml run --rm checks` | PR #18 | Done |
-| Команда сборки документации | `Makefile`, `docs/`, `docs/diagrams/*.drawio.xml` | `make docs` | PR #20 | Done |
+| Команда сборки документации | `Makefile`, `docs/`, `docs/diagrams/*.drawio.xml`, `docs/diagrams/exports/*.png` | `make docs` | PR #20; current diagram organization | In review |
 | Отчет о покрытии тестами | `Makefile`, `pyproject.toml` | `make setup`, `make coverage` | PR #21 | Done |
 
 ## Проверки по областям

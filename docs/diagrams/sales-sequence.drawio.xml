@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="Продажа автомобиля">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Продажа автомобиля" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="620" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="3" value="Пользователь" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="135" width="165" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="app.ui_tables" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="135" width="165" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="dealership_core" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="135" width="165" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="SQLite" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="135" width="165" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="app.contracts" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="135" width="165" height="72" as="geometry" />
+        </mxCell>
+
+        <mxCell id="8" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="152.5" y="985" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="622.5" y="985" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="952.5" y="985" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1172.5" y="985" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#8b6ff6;strokeWidth=2;" edge="1" parent="1" source="7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1462.5" y="985" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="13" value="выбрать автомобиль и открыть форму продажи" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="152.5" y="255" as="sourcePoint" />
+            <mxPoint x="622.5" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="validate_sale(status, price, date)" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="622.5" y="310" as="sourcePoint" />
+            <mxPoint x="952.5" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="OK / ошибка валидации" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="952.5" y="360" as="sourcePoint" />
+            <mxPoint x="622.5" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="показать форму с заполненными полями" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="622.5" y="415" as="sourcePoint" />
+            <mxPoint x="152.5" y="415" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="сохранить форму продажи" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="152.5" y="470" as="sourcePoint" />
+            <mxPoint x="622.5" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="INSERT INTO sales" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="622.5" y="525" as="sourcePoint" />
+            <mxPoint x="1172.5" y="525" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="19" value="set_car_sold_after_sale" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1075" y="545" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="" style="curved=1;endArrow=block;html=1;rounded=0;dashed=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1172.5" y="585" as="sourcePoint" />
+            <mxPoint x="1172.5" y="585" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1225" y="565" />
+              <mxPoint x="1225" y="605" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="complete_reservation_after_sale" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1035" y="625" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="" style="curved=1;endArrow=block;html=1;rounded=0;dashed=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1172.5" y="665" as="sourcePoint" />
+            <mxPoint x="1172.5" y="665" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1225" y="645" />
+              <mxPoint x="1225" y="685" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="23" value="save_contract_for_sale()" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="622.5" y="750" as="sourcePoint" />
+            <mxPoint x="1462.5" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="получить данные продажи" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1462.5" y="800" as="sourcePoint" />
+            <mxPoint x="1172.5" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="записать sales.contract_file" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1462.5" y="850" as="sourcePoint" />
+            <mxPoint x="1172.5" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="33" value="conn.commit()" style="endArrow=block;html=1;rounded=0;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="622.5" y="895" as="sourcePoint" />
+            <mxPoint x="1172.5" y="895" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="путь к файлу договора" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1462.5" y="920" as="sourcePoint" />
+            <mxPoint x="622.5" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="показать preview и сообщение" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#333333;strokeWidth=2;fontSize=16;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="622.5" y="960" as="sourcePoint" />
+            <mxPoint x="152.5" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="28" value="Пользователь" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="985" width="165" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="app.ui_tables" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="985" width="165" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="dealership_core" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="985" width="165" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="SQLite" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="985" width="165" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="app.contracts" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#eeeaff;strokeColor=#8b6ff6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="985" width="165" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

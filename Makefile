@@ -37,7 +37,7 @@ build-lib:
 	$(PYTHON) -m build --wheel --no-isolation
 
 docs:
-	$(PYTHON) -c "from pathlib import Path; import xml.etree.ElementTree as ET; docs=['README.md','docs/specification.md','docs/architecture.md','docs/developer-guide.md','docs/traceability.md','docs/diagrams/README.md']; missing=[p for p in docs if not Path(p).exists()]; diagrams=sorted(Path('docs/diagrams').glob('*.drawio.xml')); [ET.parse(p) for p in diagrams]; assert diagrams, 'No editable diagram XML files found'; assert not missing, 'Missing documentation files: '+', '.join(missing); print('Checked', len(docs), 'documentation files and', len(diagrams), 'diagram sources')"
+	$(PYTHON) -c "from pathlib import Path; import xml.etree.ElementTree as ET; docs=['README.md','docs/specification.md','docs/architecture.md','docs/developer-guide.md','docs/traceability.md','docs/diagrams/README.md']; exports=['docs/diagrams/exports/idefA-0_context.png','docs/diagrams/exports/idefA0_decomposition.png','docs/diagrams/exports/idefA4_decomposition.png','docs/diagrams/exports/use-cases.png','docs/diagrams/exports/app-startup-sequence.png','docs/diagrams/exports/sales-sequence.png','docs/diagrams/exports/schema.png']; missing=[p for p in docs+exports if not Path(p).exists()]; diagrams=sorted(Path('docs/diagrams').glob('*.drawio.xml')); [ET.parse(p) for p in diagrams]; assert len(diagrams) >= 6, 'Expected at least 6 editable diagram XML files'; assert not missing, 'Missing documentation files: '+', '.join(missing); print('Checked', len(docs), 'documentation files,', len(diagrams), 'diagram sources and', len(exports), 'diagram exports')"
 
 coverage:
 	$(PYTHON) -c "import coverage" || (echo "Missing coverage tooling. Run: make setup" && exit 1)
