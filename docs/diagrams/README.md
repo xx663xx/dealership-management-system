@@ -2,16 +2,19 @@
 
 Папка хранит редактируемые исходники диаграмм и PNG-экспорты для отчетов и просмотра. Исходниками считаются `.drawio.xml` файлы; PNG лежат отдельно в `exports/` и не редактируются вручную.
 
-## Исходники
+## Индекс
 
-| Файл | Назначение |
-| --- | --- |
-| `idefA-0_context.drawio.xml` | Контекстная IDEF0-диаграмма A-0: границы работы автосалона, входы, выходы, управление и механизмы. |
-| `idefA0_decomposition.drawio.xml` | Декомпозиция A0: основные процессы автосалона от учета автомобилей до сервиса и отчетов. |
-| `idefA4_decomposition.drawio.xml` | Декомпозиция A4: сценарий продажи автомобиля, включая подбор, бронирование, договор и обновление статуса. |
-| `use-cases.drawio.xml` | Use-case overview: роли пользователей, клиентские сценарии, сервисные сценарии и проверки проекта. |
-| `app-startup-sequence.drawio.xml` | Sequence diagram запуска приложения: `main.py`, `app.main_window`, `app.database`, Tkinter UI. |
-| `sales-sequence.drawio.xml` | Sequence diagram продажи автомобиля: core-валидация, `INSERT INTO sales`, SQLite-триггеры, договор. |
+| Диаграмма | Исходник | PNG-превью | Используется в документах |
+| --- | --- | --- | --- |
+| IDEF0 context A-0 | `idefA-0_context.drawio.xml` | `exports/idefA-0_context.png` | `docs/architecture.md` |
+| IDEF0 decomposition A0 | `idefA0_decomposition.drawio.xml` | `exports/idefA0_decomposition.png` | `docs/architecture.md` |
+| IDEF0 sale decomposition A4 | `idefA4_decomposition.drawio.xml` | `exports/idefA4_decomposition.png` | `docs/architecture.md` |
+| Use-case overview | `use-cases.drawio.xml` | `exports/use-cases.png` | `docs/specification.md`, `docs/architecture.md` |
+| App startup sequence | `app-startup-sequence.drawio.xml` | `exports/app-startup-sequence.png` | `docs/architecture.md`, `docs/developer-guide.md` |
+| Sales sequence | `sales-sequence.drawio.xml` | `exports/sales-sequence.png` | `docs/specification.md`, `docs/architecture.md` |
+| SQLite ERD preview | - | `exports/schema.png` | `docs/architecture.md` |
+
+`schema.png` сохранен как PNG-превью ERD SQLite-схемы. Точным редактируемым source of truth для модели данных является `sql/schema.sql`.
 
 ## PNG-экспорты
 

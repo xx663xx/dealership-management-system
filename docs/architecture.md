@@ -22,18 +22,30 @@
 
 ## Диаграммы
 
-Редактируемые исходники диаграмм лежат в `docs/diagrams/`, а PNG-превью - в `docs/diagrams/exports/`.
+Редактируемые исходники диаграмм лежат в `docs/diagrams/`, а PNG-превью - в `docs/diagrams/exports/`. Полный индекс с назначением и местами использования находится в `docs/diagrams/README.md`.
 
-| Диаграмма | Исходник | PNG |
-| --- | --- | --- |
-| Use-case overview | `docs/diagrams/use-cases.drawio.xml` | `docs/diagrams/exports/use-cases.png` |
-| Запуск приложения | `docs/diagrams/app-startup-sequence.drawio.xml` | `docs/diagrams/exports/app-startup-sequence.png` |
-| Продажа автомобиля | `docs/diagrams/sales-sequence.drawio.xml` | `docs/diagrams/exports/sales-sequence.png` |
-| IDEF0 context A-0 | `docs/diagrams/idefA-0_context.drawio.xml` | `docs/diagrams/exports/idefA-0_context.png` |
-| IDEF0 decomposition A0 | `docs/diagrams/idefA0_decomposition.drawio.xml` | `docs/diagrams/exports/idefA0_decomposition.png` |
-| IDEF0 sale decomposition A4 | `docs/diagrams/idefA4_decomposition.drawio.xml` | `docs/diagrams/exports/idefA4_decomposition.png` |
+| Диаграмма | Исходник | PNG | Где используется |
+| --- | --- | --- | --- |
+| Use-case overview | `docs/diagrams/use-cases.drawio.xml` | `docs/diagrams/exports/use-cases.png` | `docs/specification.md`, этот документ |
+| Запуск приложения | `docs/diagrams/app-startup-sequence.drawio.xml` | `docs/diagrams/exports/app-startup-sequence.png` | этот документ, `docs/developer-guide.md` |
+| Продажа автомобиля | `docs/diagrams/sales-sequence.drawio.xml` | `docs/diagrams/exports/sales-sequence.png` | `docs/specification.md`, этот документ |
+| IDEF0 context A-0 | `docs/diagrams/idefA-0_context.drawio.xml` | `docs/diagrams/exports/idefA-0_context.png` | этот документ |
+| IDEF0 decomposition A0 | `docs/diagrams/idefA0_decomposition.drawio.xml` | `docs/diagrams/exports/idefA0_decomposition.png` | этот документ |
+| IDEF0 sale decomposition A4 | `docs/diagrams/idefA4_decomposition.drawio.xml` | `docs/diagrams/exports/idefA4_decomposition.png` | этот документ |
+| ERD SQLite-схемы | - | `docs/diagrams/exports/schema.png` | раздел `Работа с SQLite` |
+
+Use-case overview связывает роли из спецификации с рабочими сценариями приложения. IDEF0-диаграммы показывают функциональную декомпозицию автосалона, а sequence diagrams раскрывают порядок вызовов в двух ключевых runtime-потоках.
+
+![Use-case diagram](diagrams/exports/use-cases.png)
 
 ## Запускаемый слой
+
+Sequence diagram запуска приложения:
+
+- editable source: `docs/diagrams/app-startup-sequence.drawio.xml`;
+- PNG preview: `docs/diagrams/exports/app-startup-sequence.png`.
+
+![App startup sequence diagram](diagrams/exports/app-startup-sequence.png)
 
 `main.py` намеренно оставлен маленьким
 
@@ -46,6 +58,10 @@
 `app/main_window.py` отвечает за создание корневого окна Tkinter, подключение к базе, инициализацию схемы и главное меню приложения. Он не хранит доменные правила сам, а передает действия в UI-модули таблиц и отчетов.
 
 ## GUI и прикладная логика
+
+Основные пользовательские сценарии показаны в `docs/diagrams/use-cases.drawio.xml`, а сценарий продажи раскрыт отдельно в `docs/diagrams/sales-sequence.drawio.xml`.
+
+![Sales sequence diagram](diagrams/exports/sales-sequence.png)
 
 `app/ui_tables.py` отвечает за табличные окна и формы добавления, изменения и удаления записей. Через него пользователь работает с автомобилями, клиентами, сотрудниками, поставщиками, продажами, бронями, тест-драйвами и сервисом.
 
@@ -80,6 +96,10 @@ make build-lib
 Команда создает wheel-артефакт в `dist/` стандартным Python-инструментом `build` по метаданным из `pyproject.toml`. Сборка не запускает Tkinter и не требует подключения к SQLite.
 
 ## Работа с SQLite
+
+ERD-превью SQLite-модели находится в `docs/diagrams/exports/schema.png`. Оно используется как обзор таблиц и связей, а точным source of truth остается `sql/schema.sql`.
+
+![SQLite schema ERD](diagrams/exports/schema.png)
 
 `app/database.py` отвечает за создание подключения и инициализацию базы
 
@@ -146,14 +166,7 @@ SQLite-схема хранит не только таблицы, но и час�
 - `docs/diagrams/app-startup-sequence.drawio.xml`;
 - `docs/diagrams/sales-sequence.drawio.xml`.
 
-## Дальнейшее развитие
+PNG-превью этих потоков находятся в:
 
-Текущая архитектура уже разделяет entry point, GUI, reusable core, SQLite и тесты. Следующие улучшения запланированы как отдельные небольшие PR, чтобы не смешивать архитектурные изменения, документацию и инфраструктуру.
-
-Планируемые улучшения
-
-- подключить `validate_reservation()` и `validate_test_drive()` к GUI-формам;
-- вынести чистый рендер договора в reusable core;
-- разделить в `app/database.py` подключение, инициализацию схемы, миграции и seed-логику;
-- расширить GUI-валидацию для бронирований и тест-драйвов;
-- добавить дополнительные регрессионные проверки для отчетов.
+- `docs/diagrams/exports/app-startup-sequence.png`;
+- `docs/diagrams/exports/sales-sequence.png`.

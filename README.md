@@ -162,6 +162,8 @@ screenshots/                    скриншоты Tkinter-интерфейса
 - `docs/traceability.md` - матрица соответствия требований файлам, тестам и PR;
 - `docs/diagrams/` - редактируемые исходники диаграмм и PNG-экспорты для отчетов.
 
+Индекс диаграмм находится в `docs/diagrams/README.md`: там перечислены Draw.io-исходники, PNG-превью и документы, где каждая диаграмма используется.
+
 `screenshots/` хранит только скриншоты Tkinter-интерфейса. Диаграммы и их PNG-превью лежат в `docs/diagrams/`.
 
 ## Команды проекта
@@ -179,20 +181,3 @@ make compose-check  # запустить Docker/Compose non-GUI проверку
 make compose-down   # остановить compose-окружение проверки
 make clean      # удалить локальные generated artifacts
 ```
-
-## Финальная проверка перед сдачей
-
-Перед защитой стоит прогнать проект как проверяющий:
-
-```bash
-make clean
-make setup
-make check
-make build-lib
-make docs
-make coverage
-make compose-check
-make compose-down
-```
-
-После этого остается проверить, что в Git не попали локальные файлы, кэши, база данных, build-артефакты и локальная проектная память.

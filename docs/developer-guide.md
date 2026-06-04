@@ -41,6 +41,11 @@ make run
 
 Приложение открывает Tkinter-интерфейс и использует локальную SQLite-базу `data/dealership.db`.
 
+Порядок запуска показан в sequence diagram:
+
+- editable source: `docs/diagrams/app-startup-sequence.drawio.xml`;
+- PNG preview: `docs/diagrams/exports/app-startup-sequence.png`.
+
 Если базы еще нет, проект инициализирует ее из файлов
 
 - `sql/schema.sql`
@@ -73,6 +78,8 @@ make docs
 ```
 
 Команда проверяет наличие основных Markdown-документов и парсит Draw.io XML-исходники диаграмм стандартными средствами Python.
+
+Индекс диаграмм находится в `docs/diagrams/README.md`. При изменении схемы нужно обновлять и editable source в `docs/diagrams/*.drawio.xml`, и соответствующий PNG preview в `docs/diagrams/exports/`.
 
 Для отчета покрытия:
 
@@ -122,6 +129,7 @@ tests/smoke/                    smoke-тесты без GUI
 tests/unit/                     тесты reusable core
 tests/integration/              SQLite integration tests
 docs/                           спецификация, архитектура, traceability
+docs/diagrams/                  Draw.io-исходники диаграмм и PNG-превью
 Dockerfile                      контейнерная non-GUI проверка
 infra/                          Compose и описание контейнерной проверки
 ```
@@ -167,10 +175,8 @@ make compose-down
 git status --short --ignored
 ```
 
-Не нужно добавлять в Git локальную память, generated files, runtime data и кэши:
+Не нужно добавлять в Git generated files, runtime data и кэши:
 
-- `Obsidian/`
-- `AGENTS.md`
 - `data/`
 - `contracts/`
 - `dist/`
