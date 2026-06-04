@@ -39,7 +39,7 @@
 | Документация для разработчика | `docs/developer-guide.md` | Review, fresh-clone workflow, `make check`, `make build-lib` | PR #10 | Done |
 | Docker/Compose для воспроизводимых проверок | `Dockerfile`, `.dockerignore`, `.env.example`, `infra/compose.yaml`, `infra/README.md` | `docker build`, `docker run`, `docker compose -f infra/compose.yaml run --rm checks` | PR #18 | Done |
 | Команда сборки документации | `Makefile`, `docs/`, `docs/diagrams/*.drawio.xml` | `make docs` | PR #20 | Done |
-| Отчет о покрытии тестами | `Makefile`, `pyproject.toml` | `make setup`, `make coverage` | Current Makefile follow-up | In review |
+| Отчет о покрытии тестами | `Makefile`, `pyproject.toml` | `make setup`, `make coverage` | PR #21 | Done |
 
 ## Проверки по областям
 

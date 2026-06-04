@@ -32,16 +32,20 @@ git clone <repo-url>
 cd <repo-folder>
 make help
 make check
-make install-build-tool
+make setup
 make build-lib
+make docs
+make coverage
 ```
 
 Если Python нужно указать явно:
 
 ```bash
 make check PYTHON=python
-make install-build-tool PYTHON=python
+make setup PYTHON=python
 make build-lib PYTHON=python
+make docs PYTHON=python
+make coverage PYTHON=python
 ```
 
 ## Запуск приложения
@@ -85,6 +89,21 @@ make check
 make test
 ```
 
+Документацию и редактируемые диаграммы можно проверить командой:
+
+```bash
+make docs
+```
+
+Отчет покрытия тестами формируется через `coverage.py`:
+
+```bash
+make setup
+make coverage
+```
+
+`make coverage` запускает весь `unittest`-набор, печатает отчет в терминал и создает `coverage.xml`. Общий процент покрытия включает Tkinter GUI-слой, поэтому он ниже покрытия reusable core; GUI-сценарии дополнительно проверяются smoke/manual проверками.
+
 ## Сборка переиспользуемого ядра
 
 Переиспользуемая логика находится в:
@@ -96,11 +115,11 @@ packages/dealership_core/
 Собрать ее как wheel-артефакт можно без запуска GUI:
 
 ```bash
-make install-build-tool
+make setup
 make build-lib
 ```
 
-`make install-build-tool` явно устанавливает стандартные инструменты сборки `build` и `setuptools`. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling доступен, и собирает wheel через стандартный `python -m build`.
+`make setup` явно устанавливает инструменты разработки `build`, `setuptools` и `coverage`. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling доступен, и собирает wheel через стандартный `python -m build`.
 
 ## Docker/Compose проверки
 
@@ -152,14 +171,28 @@ make help       # показать доступные команды
 make run        # запустить Tkinter-приложение
 make test       # запустить unittest-набор
 make check      # основная локальная проверка
-make install-build-tool  # установить стандартные инструменты сборки
+make setup      # установить инструменты разработки
 make build-lib  # собрать reusable core как wheel
+make docs       # проверить документацию и Draw.io XML-диаграммы
+make coverage   # сформировать отчет покрытия тестами
+make compose-check  # запустить Docker/Compose non-GUI проверку
+make compose-down   # остановить compose-окружение проверки
+make clean      # удалить локальные generated artifacts
 ```
 
-## Что пока запланировано
+## Финальная проверка перед сдачей
 
-На текущем этапе еще не реализованы:
+Перед защитой стоит прогнать проект как проверяющий:
 
-- отдельная команда `make docs`;
-- команда отчета покрытия тестами;
-- полноценная команда `make setup`.
+```bash
+make clean
+make setup
+make check
+make build-lib
+make docs
+make coverage
+make compose-check
+make compose-down
+```
+
+После этого остается проверить, что в Git не попали локальные файлы, кэши, база данных, build-артефакты и локальная проектная память.

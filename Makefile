@@ -16,7 +16,7 @@ help:
 		'install-build-tool  Install standard Python build tooling' \
 		'build-lib           Build the reusable dealership core package' \
 		'docs                Check documentation and editable diagram sources' \
-		'coverage            Run tests through stdlib trace coverage' \
+		'coverage            Generate test coverage report' \
 		'compose-check       Run Docker/Compose non-GUI verification' \
 		'compose-down        Stop Docker/Compose verification stack' \
 		'clean               Remove generated local artifacts'
