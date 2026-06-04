@@ -30,7 +30,7 @@ test:
 setup: install-build-tool
 
 install-build-tool:
-	$(PYTHON) -m pip install "build>=1.2" "setuptools>=68"
+	$(PYTHON) -m pip install "build>=1.2" "setuptools>=68" "coverage>=7.5"
 
 build-lib:
 	$(PYTHON) -c "import build, setuptools" || (echo "Missing build tooling. Run: make install-build-tool" && exit 1)
@@ -40,8 +40,10 @@ docs:
 	$(PYTHON) -c "from pathlib import Path; import xml.etree.ElementTree as ET; docs=['README.md','docs/specification.md','docs/architecture.md','docs/developer-guide.md','docs/traceability.md','docs/diagrams/README.md']; missing=[p for p in docs if not Path(p).exists()]; diagrams=sorted(Path('docs/diagrams').glob('*.drawio.xml')); [ET.parse(p) for p in diagrams]; assert diagrams, 'No editable diagram XML files found'; assert not missing, 'Missing documentation files: '+', '.join(missing); print('Checked', len(docs), 'documentation files and', len(diagrams), 'diagram sources')"
 
 coverage:
-	@printf '%s\n' 'No external coverage tool is required for this project yet; running the full unittest suite as the coverage baseline.'
-	$(PYTHON) -m unittest discover -s tests
+	$(PYTHON) -c "import coverage" || (echo "Missing coverage tooling. Run: make setup" && exit 1)
+	$(PYTHON) -m coverage run --source=app,packages -m unittest discover -s tests
+	$(PYTHON) -m coverage report
+	$(PYTHON) -m coverage xml
 
 compose-check:
 	docker compose -f infra/compose.yaml run --rm checks
