@@ -35,11 +35,11 @@
 | Спецификация предметной области оформлена отдельно | `docs/specification.md` | Documentation review, `make check` | PR #7 | Done |
 | Архитектурное описание проекта оформлено отдельно | `docs/architecture.md` | Documentation review, `make check` | PR #8 | Done |
 | Диаграммы хранятся в редактируемом виде | `docs/diagrams/*.drawio.xml`, `docs/diagrams/README.md` | `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI | PR #11 | Done |
-| README является полной точкой входа | `README.md` | Fresh-clone/manual verification, `make check`, `make install-build-tool`, `make build-lib` | Current README PR | In review |
+| README является полной точкой входа | `README.md` | Fresh-clone/manual verification, `make check`, `make install-build-tool`, `make build-lib` | PR #19 | Done |
 | Документация для разработчика | `docs/developer-guide.md` | Review, fresh-clone workflow, `make check`, `make build-lib` | PR #10 | Done |
 | Docker/Compose для воспроизводимых проверок | `Dockerfile`, `.dockerignore`, `.env.example`, `infra/compose.yaml`, `infra/README.md` | `docker build`, `docker run`, `docker compose -f infra/compose.yaml run --rm checks` | PR #18 | Done |
-| Команда сборки документации | Planned: `make docs` or equivalent | `make docs` | Not started | Planned |
-| Отчет о покрытии тестами | Planned: coverage tooling / `make coverage` | `make coverage` | Not started | Planned |
+| Команда сборки документации | `Makefile`, `docs/`, `docs/diagrams/*.drawio.xml` | `make docs` | PR #20 | Done |
+| Отчет о покрытии тестами | `Makefile`, `pyproject.toml` | `make setup`, `make coverage` | Current Makefile follow-up | In review |
 
 ## Проверки по областям
 
@@ -51,11 +51,8 @@
 | Reusable core build | `packages/dealership_core/`, `pyproject.toml` | `make build-lib` |
 | Container non-GUI checks | `Dockerfile`, `infra/compose.yaml`, `infra/README.md` | `docker compose -f infra/compose.yaml run --rm checks` |
 | Tkinter runtime | `main.py`, `app/main_window.py`, `app/ui_tables.py`, `app/ui_reports.py` | `make run` |
-| Documentation | `README.md`, `docs/specification.md`, `docs/architecture.md` | Review + `make check` |
+| Documentation | `README.md`, `docs/specification.md`, `docs/architecture.md` | `make docs` |
 
 ## Что осталось сделать
 
-На текущем этапе проект уже имеет тесты, reusable core, thin entrypoint, packaging-команду, Docker/Compose, спецификацию, архитектурное описание, traceability и редактируемые диаграммы. Перед защитой остаются дополнительные улучшения автоматизации:
-
-- добавить `make docs`;
-- добавить `make coverage`.
+На текущем этапе проект уже имеет тесты, reusable core, thin entrypoint, packaging-команду, Docker/Compose, спецификацию, архитектурное описание, traceability, редактируемые диаграммы, проверку документации и команду отчета покрытия. Перед защитой остается финальный stress-test на чистом состоянии репозитория.
