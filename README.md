@@ -128,6 +128,18 @@ make build-lib
 
 `make setup` создает локальное окружение `.venv` и устанавливает туда инструменты разработки `build`, `setuptools` и `coverage`. Это нужно для современных Linux-дистрибутивов, где системный Python защищен от прямого `pip install`. `make build-lib` не устанавливает зависимости молча: он проверяет, что build tooling доступен в `.venv`, и собирает wheel через стандартный `python -m build`.
 
+## Публикация reusable core
+
+Пакет `dealership-core` версии `0.1.0` опубликован на TestPyPI: [test.pypi.org/project/dealership-core](https://test.pypi.org/project/dealership-core/).
+
+Проверить установку опубликованного reusable core можно так:
+
+```bash
+python -m pip install --index-url https://test.pypi.org/simple/ --no-deps dealership-core
+```
+
+На TestPyPI опубликована только переиспользуемая библиотека `packages/dealership_core`. Tkinter-приложение остается runnable-частью репозитория и запускается локально через `make run`.
+
 ## Docker/Compose проверки
 
 Tkinter GUI запускается локально через `make run`. Docker/Compose используется для воспроизводимых non-GUI проверок:
