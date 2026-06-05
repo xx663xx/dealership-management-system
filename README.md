@@ -153,7 +153,7 @@ tests/smoke/                    smoke-тесты без GUI
 tests/unit/                     unit и negative tests reusable core
 tests/integration/              SQLite integration tests
 docs/                           документация, спецификация, архитектура
-docs/diagrams/                  редактируемые исходники диаграмм и PNG-экспорты
+docs/diagrams/                  редактируемые Draw.io/DBML-исходники диаграмм и PNG-экспорты
 Dockerfile                      контейнерная non-GUI проверка
 infra/                          Compose и описание контейнерной проверки
 screenshots/                    скриншоты Tkinter-интерфейса
@@ -167,9 +167,9 @@ screenshots/                    скриншоты Tkinter-интерфейса
 - `docs/architecture.md` - слои приложения, reusable core, SQLite, договоры и тестовая стратегия;
 - `docs/developer-guide.md` - локальный workflow разработчика, ветки, проверки и Pull Request;
 - `docs/traceability.md` - матрица соответствия требований файлам, тестам и PR;
-- `docs/diagrams/` - редактируемые исходники диаграмм и PNG-экспорты для отчетов.
+- `docs/diagrams/` - редактируемые Draw.io/DBML-исходники диаграмм и PNG-экспорты для отчетов.
 
-Индекс диаграмм находится в `docs/diagrams/README.md`: там перечислены Draw.io-исходники, PNG-превью и документы, где каждая диаграмма используется.
+Индекс диаграмм находится в `docs/diagrams/README.md`: там перечислены Draw.io-исходники, DBML-исходник ERD, PNG-превью и документы, где каждая диаграмма используется.
 
 `screenshots/` хранит только скриншоты Tkinter-интерфейса. Диаграммы и их PNG-превью лежат в `docs/diagrams/`.
 
@@ -182,7 +182,7 @@ make test       # запустить unittest-набор
 make check      # основная локальная проверка
 make setup      # создать .venv и установить инструменты разработки
 make build-lib  # собрать reusable core как wheel
-make docs       # проверить документацию и Draw.io XML-диаграммы
+make docs       # проверить документацию и редактируемые исходники диаграмм
 make coverage   # сформировать отчет покрытия тестами
 make compose-check  # запустить Docker/Compose non-GUI проверку
 make compose-down   # остановить compose-окружение проверки

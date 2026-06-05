@@ -30,11 +30,11 @@
 | Сборка reusable core использует стандартный Python build workflow | `pyproject.toml`, `Makefile` | `make setup`, `make build-lib` | PR #18; Ubuntu setup fix | Done |
 | Спецификация предметной области оформлена отдельно | `docs/specification.md` | Documentation review, `make check` | PR #7 | Done |
 | Архитектурное описание проекта оформлено отдельно | `docs/architecture.md` | Documentation review, `make check` | PR #8; diagram cleanup `e07b609` | Done |
-| Диаграммы хранятся в редактируемом виде и связаны с документацией | `docs/diagrams/*.drawio.xml`, `docs/diagrams/exports/*.png`, `docs/diagrams/README.md`, `docs/specification.md`, `docs/architecture.md`, `docs/developer-guide.md` | `make docs`, `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI | PR #11; direct main commit `e07b609` | Done |
+| Диаграммы хранятся в редактируемом виде и связаны с документацией | `docs/diagrams/*.drawio.xml`, `docs/diagrams/schema.dbml`, `docs/diagrams/exports/*.png`, `docs/diagrams/README.md`, `docs/specification.md`, `docs/architecture.md`, `docs/developer-guide.md` | `make docs`, `xmllint --noout docs/diagrams/*.drawio.xml`, экспорт через draw.io CLI, импорт `schema.dbml` в dbdiagram.io | PR #11; direct main commit `e07b609`; DBML ERD update | Done |
 | README является полной точкой входа | `README.md` | Fresh-clone/manual verification, `make check`, `make setup`, `make build-lib` | PR #19; Ubuntu setup fix | Done |
 | Документация для разработчика | `docs/developer-guide.md` | Review, fresh-clone workflow, `make check`, `make build-lib` | PR #10 | Done |
 | Docker/Compose для воспроизводимых проверок | `Dockerfile`, `.dockerignore`, `.env.example`, `infra/compose.yaml`, `infra/README.md` | `docker build`, `docker run`, `docker compose -f infra/compose.yaml run --rm checks` | PR #18 | Done |
-| Команда сборки документации | `Makefile`, `docs/`, `docs/diagrams/*.drawio.xml`, `docs/diagrams/exports/*.png` | `make docs` | PR #20; direct main commit `e07b609` | Done |
+| Команда сборки документации | `Makefile`, `docs/`, `docs/diagrams/*.drawio.xml`, `docs/diagrams/schema.dbml`, `docs/diagrams/exports/*.png` | `make docs` | PR #20; direct main commit `e07b609`; DBML ERD update | Done |
 | Отчет о покрытии тестами | `Makefile`, `pyproject.toml` | `make setup`, `make coverage` | PR #21 | Done |
 
 ## Проверки по областям
@@ -51,4 +51,4 @@
 
 ## Текущее состояние
 
-На текущем этапе проект имеет тесты, reusable core, thin entrypoint, packaging-команду, Docker/Compose, спецификацию, архитектурное описание, traceability, редактируемые диаграммы, проверку документации и команду отчета покрытия.
+На текущем этапе проект имеет тесты, reusable core, thin entrypoint, packaging-команду, Docker/Compose, спецификацию, архитектурное описание, traceability, редактируемые Draw.io/DBML-диаграммы, проверку документации и команду отчета покрытия.

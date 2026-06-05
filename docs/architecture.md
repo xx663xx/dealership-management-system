@@ -32,7 +32,7 @@
 | IDEF0 context A-0 | `docs/diagrams/idefA-0_context.drawio.xml` | `docs/diagrams/exports/idefA-0_context.png` | этот документ |
 | IDEF0 decomposition A0 | `docs/diagrams/idefA0_decomposition.drawio.xml` | `docs/diagrams/exports/idefA0_decomposition.png` | этот документ |
 | IDEF0 sale decomposition A4 | `docs/diagrams/idefA4_decomposition.drawio.xml` | `docs/diagrams/exports/idefA4_decomposition.png` | этот документ |
-| ERD SQLite-схемы | - | `docs/diagrams/exports/schema.png` | раздел `Работа с SQLite` |
+| ERD SQLite-схемы | `docs/diagrams/schema.dbml` | `docs/diagrams/exports/schema.png` | раздел `Работа с SQLite` |
 
 Use-case overview связывает роли из спецификации с рабочими сценариями приложения. IDEF0-диаграммы показывают функциональную декомпозицию автосалона, а sequence diagrams раскрывают порядок вызовов в двух ключевых runtime-потоках.
 
@@ -97,7 +97,7 @@ make build-lib
 
 ## Работа с SQLite
 
-ERD-превью SQLite-модели находится в `docs/diagrams/exports/schema.png`. Оно используется как обзор таблиц и связей, а точным source of truth остается `sql/schema.sql`.
+ERD SQLite-модели хранится в `docs/diagrams/schema.dbml`, а PNG-превью находится в `docs/diagrams/exports/schema.png`. DBML используется как редактируемый обзор таблиц и связей для dbdiagram.io, а точным исполняемым source of truth для создания таблиц, ограничений и триггеров остается `sql/schema.sql`.
 
 ![SQLite schema ERD](diagrams/exports/schema.png)
 

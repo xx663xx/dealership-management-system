@@ -1,0 +1,88 @@
+Table clients {
+  client_id integer [pk]
+  name text [not null]
+  phone text [not null, unique]
+  email text [unique]
+}
+
+Table suppliers {
+  supplier_id integer [pk]
+  name text [not null]
+  contact text
+}
+
+Table employees {
+  employee_id integer [pk]
+  name text [not null]
+  position text [not null]
+  salary real [not null]
+}
+
+Table cars {
+  car_id integer [pk]
+  supplier_id integer
+  brand text [not null]
+  model text [not null]
+  year integer [not null]
+  mileage integer [not null]
+  color text [not null]
+  price real [not null]
+  status text [not null, default: 'доступна', note: 'доступна, продана, забронирована']
+}
+
+Table sales {
+  sale_id integer [pk]
+  car_id integer [not null, unique]
+  client_id integer [not null]
+  employee_id integer [not null]
+  sale_date text [not null]
+  contract_number text
+  sale_price real [not null]
+  payment_status text [not null, default: 'оплачено', note: 'ожидает оплаты, оплачено, отменена']
+  payment_method text
+  payment_date text
+  contract_file text
+}
+
+Table reservations {
+  reservation_id integer [pk]
+  car_id integer [not null]
+  client_id integer [not null]
+  employee_id integer [not null]
+  reservation_date text [not null]
+  valid_until text
+  status text [not null, default: 'активна', note: 'активна, завершена, отменена']
+}
+
+Table service_orders {
+  service_order_id integer [pk]
+  car_id integer [not null]
+  description text [not null]
+  cost real [not null]
+  status text [not null, default: 'новый', note: 'новый, в работе, завершен, отменен']
+}
+
+Table test_drives {
+  test_drive_id integer [pk]
+  car_id integer [not null]
+  client_id integer [not null]
+  employee_id integer [not null]
+  test_drive_date text [not null]
+  result text
+}
+
+Ref: cars.supplier_id > suppliers.supplier_id [update: cascade, delete: set null]
+
+Ref: sales.car_id > cars.car_id [update: cascade, delete: restrict]
+Ref: sales.client_id > clients.client_id [update: cascade, delete: restrict]
+Ref: sales.employee_id > employees.employee_id [update: cascade, delete: restrict]
+
+Ref: reservations.car_id > cars.car_id [update: cascade, delete: restrict]
+Ref: reservations.client_id > clients.client_id [update: cascade, delete: restrict]
+Ref: reservations.employee_id > employees.employee_id [update: cascade, delete: restrict]
+
+Ref: test_drives.car_id > cars.car_id [update: cascade, delete: restrict]
+Ref: test_drives.client_id > clients.client_id [update: cascade, delete: restrict]
+Ref: test_drives.employee_id > employees.employee_id [update: cascade, delete: restrict]
+
+Ref: service_orders.car_id > cars.car_id [update: cascade, delete: restrict]

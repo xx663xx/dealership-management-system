@@ -1,6 +1,6 @@
 # Диаграммы проекта
 
-Папка хранит редактируемые исходники диаграмм и PNG-экспорты для отчетов и просмотра. Исходниками считаются `.drawio.xml` файлы; PNG лежат отдельно в `exports/` и не редактируются вручную.
+Папка хранит редактируемые исходники диаграмм и PNG-экспорты для отчетов и просмотра. Исходниками считаются `.drawio.xml` файлы и DBML-файл ERD; PNG лежат отдельно в `exports/` и не редактируются вручную.
 
 ## Индекс
 
@@ -12,9 +12,9 @@
 | Use-case overview | `use-cases.drawio.xml` | `exports/use-cases.png` | `docs/specification.md`, `docs/architecture.md` |
 | App startup sequence | `app-startup-sequence.drawio.xml` | `exports/app-startup-sequence.png` | `docs/architecture.md`, `docs/developer-guide.md` |
 | Sales sequence | `sales-sequence.drawio.xml` | `exports/sales-sequence.png` | `docs/specification.md`, `docs/architecture.md` |
-| SQLite ERD preview | - | `exports/schema.png` | `docs/architecture.md` |
+| SQLite ERD | `schema.dbml` | `exports/schema.png` | `docs/architecture.md` |
 
-`schema.png` сохранен как PNG-превью ERD SQLite-схемы. Точным редактируемым source of truth для модели данных является `sql/schema.sql`.
+`schema.dbml` хранит редактируемый исходник ERD для dbdiagram.io, а `schema.png` сохранен как PNG-превью этой схемы. Исполняемым source of truth для SQLite-ограничений, триггеров и создания таблиц остается `sql/schema.sql`.
 
 ## PNG-экспорты
 
@@ -40,6 +40,12 @@ make docs
 
 ```bash
 xmllint --noout docs/diagrams/*.drawio.xml
+```
+
+DBML-исходник ERD можно открыть или импортировать в dbdiagram.io:
+
+```bash
+docs/diagrams/schema.dbml
 ```
 
 Если установлен draw.io CLI, можно пересобрать PNG-превью:

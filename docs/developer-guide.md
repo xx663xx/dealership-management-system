@@ -84,9 +84,9 @@ make test
 make docs
 ```
 
-Команда проверяет наличие основных Markdown-документов и парсит Draw.io XML-исходники диаграмм стандартными средствами Python.
+Команда проверяет наличие основных Markdown-документов, DBML-исходника ERD и парсит Draw.io XML-исходники диаграмм стандартными средствами Python.
 
-Индекс диаграмм находится в `docs/diagrams/README.md`. При изменении схемы нужно обновлять и editable source в `docs/diagrams/*.drawio.xml`, и соответствующий PNG preview в `docs/diagrams/exports/`.
+Индекс диаграмм находится в `docs/diagrams/README.md`. При изменении диаграммы нужно обновлять соответствующий editable source в `docs/diagrams/`, а также PNG preview в `docs/diagrams/exports/`. Для ERD исходником является `docs/diagrams/schema.dbml`, а исполняемой SQLite-схемой остается `sql/schema.sql`.
 
 Для отчета покрытия:
 
@@ -137,7 +137,7 @@ tests/smoke/                    smoke-тесты без GUI
 tests/unit/                     тесты reusable core
 tests/integration/              SQLite integration tests
 docs/                           спецификация, архитектура, traceability
-docs/diagrams/                  Draw.io-исходники диаграмм и PNG-превью
+docs/diagrams/                  Draw.io/DBML-исходники диаграмм и PNG-превью
 Dockerfile                      контейнерная non-GUI проверка
 infra/                          Compose и описание контейнерной проверки
 ```
